@@ -27,18 +27,18 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, ActionL
 	
 	private Thread thread;
 	
-	//Default position of bubble gun
-	private int x1 = getWidth()/2 -10;
-	private int x2 = getWidth()/2 +10;
-	private int y1 = getHeight();
-	private int y2 = getHeight()-70;
+	//Default dimensions/position of the bubble gun
+	private int x1 = this.getWidth() +190;
+	private int x2 = this.getWidth() +210;
+	private int y1 = 500;
+	private int y2 = 400;
 	
 	//lines that make the bubble gun
 	private Line2D line1 = new Line2D.Double(x1,y1, x1, y2);
 	private Line2D line2 = new Line2D.Double(x2,y1, x2, y2);
 	
 	//the ball to shoot
-	private Ellipse2D.Double ball = new Ellipse2D.Double(line1.getX1(), line1.getY2(), x2-x1, 20);
+	private Ellipse2D.Double ball; // = new Ellipse2D.Double(line2.getX1(), line2.getY2(), x2-x1, 20);
 
 	private AffineTransform at1;
 	private AffineTransform at2;
@@ -84,24 +84,24 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, ActionL
 	}
 	
 	
-	public void ballMove() {
-		if(x + angleX < 0) {
-			angleX = 1;
-		}else if(x + angleX > getWidth() - 20) {
-			angleX = -1;
-		}else if(y + angleY < 0) {
-			angleY = 1;
-		}else if(y + angleY > getHeight() - 20) {
-			angleY = -1;
-		}
-		
-		x = x + angleX;
-		y = y + angleY;
-	}
+//	public void ballMove() {
+//		if(x + angleX < 0) {
+//			angleX = 1;
+//		}else if(x + angleX > getWidth() - 20) {
+//			angleX = -1;
+//		}else if(y + angleY < 0) {
+//			angleY = 1;
+//		}else if(y + angleY > getHeight() - 20) {
+//			angleY = -1;
+//		}
+//		
+//		x = x + angleX;
+//		y = y + angleY;
+//	}
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-    //	repaint();
+    	repaint();
 	}
 	
 	@Override

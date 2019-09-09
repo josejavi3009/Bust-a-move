@@ -18,6 +18,7 @@ public class GameWindow extends JFrame {
 		gameScreen = new GameScreen();
 		add(gameScreen);
 		addKeyListener(gameScreen);
+	//	setResizable(false);
 	}
 	
 	public void startGame() {
