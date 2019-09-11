@@ -1,4 +1,4 @@
-package userinterface;
+package game_elements;
 import java.awt.Graphics;
 
 import javax.swing.JComponent;

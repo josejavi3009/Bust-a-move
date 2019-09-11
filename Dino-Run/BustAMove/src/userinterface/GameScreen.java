@@ -12,10 +12,16 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import game_elements.BouncingBall;
+import game_elements.BouncingBox;
+import game_elements.BouncingFigure;
+
 public class GameScreen extends JPanel implements Runnable, KeyListener, ActionListener{
+	
 	
     private int deg = 0;
 	private int i = 0;
@@ -38,7 +44,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, ActionL
 	private Line2D line2 = new Line2D.Double(x2,y1, x2, y2);
 	
 	//the ball to shoot
-	private Ellipse2D.Double ball; // = new Ellipse2D.Double(line2.getX1(), line2.getY2(), x2-x1, 20);
+//	private Ellipse2D.Double ball; // = new Ellipse2D.Double(line2.getX1(), line2.getY2(), x2-x1, 20);
 
 	private AffineTransform at1;
 	private AffineTransform at2;
@@ -68,7 +74,9 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, ActionL
 		}
 	}
 	
-	public void paintComponent(Graphics g) {
+	
+	//added frame parameter so I can later use it in main
+	public void paintComponent(Graphics g, JFrame frame) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		this.at1 = AffineTransform.getRotateInstance(Math.toRadians(deg), line1.getX1(), line1.getY1());
@@ -77,27 +85,12 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, ActionL
 		Shape sLine2 = this.at1.createTransformedShape(line2);
 		g2.draw(sLine1);
 		g2.draw(sLine2);
-	    this.ball.setFrame(x1, y1-10, x2-x1, 20);
-	    g2.fill(this.ball);
-	    g2.draw(this.ball);
+		
+//	    this.ball.setFrame(x1, y1-10, x2-x1, 20);
+//	    g2.fill(this.ball);
+//	    g2.draw(this.ball);
 	    
 	}
-	
-	
-//	public void ballMove() {
-//		if(x + angleX < 0) {
-//			angleX = 1;
-//		}else if(x + angleX > getWidth() - 20) {
-//			angleX = -1;
-//		}else if(y + angleY < 0) {
-//			angleY = 1;
-//		}else if(y + angleY > getHeight() - 20) {
-//			angleY = -1;
-//		}
-//		
-//		x = x + angleX;
-//		y = y + angleY;
-//	}
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
